@@ -120,7 +120,6 @@ public class Sopaletras2 {
         int tamano = palabra.length();
         int j;
         PalabrasIntro pa = new PalabrasIntro(palabra);
-        System.out.println(pa);
         switch(forma){
             case 1:
                 for(j = 0; j < tamano; j++){

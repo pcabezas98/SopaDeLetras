@@ -187,6 +187,8 @@ public class frmSopaLetras extends JFrame implements MouseListener{
            // frmCreaSopaLetras frm = new frmCreaSopaLetras();
            // frm.setVisible(true);
            // this.dispose();
+
+
            System.out.println("NOFUNCIONAELREINICIAR");
         }
     }
@@ -245,17 +247,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
         pose = label.getName().indexOf("e");
         posX = Integer.parseInt(label.getName().substring(0,pose));
         posY = Integer.parseInt(label.getName().substring(pose+1));
-        System.out.println(posX);
-        System.out.println(posY);
-        
-        int numerox = (int) (Math.random() * 19);
-        int numeroy = (int) (Math.random() * 19);
 
-
-        //frmInsertaPalabra frm = new frmInsertaPalabra(sopa,posX,posY);
-        frmInsertaPalabra frm = new frmInsertaPalabra(sopa,numerox,numeroy,JMIPinta.getState(), conjunto_de_conceptos);
-        frm.setLocationRelativeTo(this); //Centrar en formulario
-        frm.setVisible(true);
     }
 
     public void mousePressed(MouseEvent e) {
