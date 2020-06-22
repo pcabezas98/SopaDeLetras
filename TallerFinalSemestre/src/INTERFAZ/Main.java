@@ -1,5 +1,14 @@
-public class App {
-    public static void main(String[] args) throws Exception {
+package INTERFAZ;
+import OBJ.*;
+import java.util.ArrayList;
+
+
+public class Main {
+
+
+
+    public static void main(String[] args) {
+
         //INSTANCIAMIENTO DE LOS OBJETOS
         Palabra palabra1 = new Palabra("FUTBOL");
         Palabra palabra2 = new Palabra("RUGBY");
@@ -213,7 +222,7 @@ public class App {
         Palabra palabra89 = new Palabra("ABEJA");
         Palabra palabra90 = new Palabra("AVISPA");
 
-        Concepto concepto9 = new Concepto("Animales marinos");
+        Concepto concepto9 = new Concepto("Insectos");
         concepto9.agregar_palabra(palabra81);
         concepto9.agregar_palabra(palabra82);
         concepto9.agregar_palabra(palabra83);
@@ -250,5 +259,22 @@ public class App {
         concepto10.agregar_palabra(palabra99);
         concepto10.agregar_palabra(palabra100);
         ////////////////////////////////
+        ArrayList<Concepto> conjunto_de_conceptos = new ArrayList<Concepto>();
+        conjunto_de_conceptos.add(concepto1);
+        conjunto_de_conceptos.add(concepto2);
+        conjunto_de_conceptos.add(concepto3);
+        conjunto_de_conceptos.add(concepto4);
+        conjunto_de_conceptos.add(concepto5);
+        conjunto_de_conceptos.add(concepto6);
+        conjunto_de_conceptos.add(concepto7);
+        conjunto_de_conceptos.add(concepto8);
+        conjunto_de_conceptos.add(concepto9);
+        conjunto_de_conceptos.add(concepto10);
+
+
+        frmCreaSopaLetras f = new frmCreaSopaLetras(conjunto_de_conceptos);
+        f.setVisible(true);
     }
+    //Notas: Error al agregar palabra de 1 letra
 }
+

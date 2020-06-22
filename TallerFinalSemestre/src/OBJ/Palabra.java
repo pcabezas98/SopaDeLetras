@@ -1,8 +1,9 @@
+package OBJ;
 
 
 public class Palabra {
     //atributos
-    String palabra;
+    public String palabra;
      ////////////////////////////////
     
 

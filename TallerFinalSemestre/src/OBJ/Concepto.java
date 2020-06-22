@@ -1,10 +1,13 @@
+package OBJ;
+
+
 import java.util.ArrayList;
 
 
 public class Concepto {
     //atributos
-    ArrayList<Palabra> lista_de_palabras = new ArrayList<Palabra>();
-    String nombre;
+    public ArrayList<Palabra> lista_de_palabras = new ArrayList<Palabra>();
+    public String nombre;
     ////////////////////////////////
 
     //constructores
