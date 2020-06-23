@@ -22,10 +22,6 @@ import java.util.List;
 
 
 
-
-
-
-
 public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyListener{
     private JButton JBAceptar;
     private JTextField txtFilas,txtColumnas,txtLetras;
@@ -33,7 +29,7 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
     private int posX,posY,forma;
     private boolean booResalta;
     private Integer[] intArray = { 1, 2, 3, 4, 5, 6, 7 , 8};
-    private Sopaletras2 sopa;
+    private Sopaletras sopa;
 
     public frmCreaSopaLetras(ArrayList<Concepto> xconjunto_de_conceptos){
         super();
@@ -99,12 +95,11 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
             return 1;
         }
     }
-
     private void crearSopaLetras(){
         int num = verifyFilas();
         if(num == 0){
             if(txtLetras.getText().length()>0){
-                Sopaletras2 xsopa = new Sopaletras2(Integer.parseInt(txtFilas.getText()),Integer.parseInt(txtColumnas.getText()),txtLetras.getText());
+                Sopaletras xsopa = new Sopaletras(Integer.parseInt(txtFilas.getText()),Integer.parseInt(txtColumnas.getText()),txtLetras.getText());
                 sopa = xsopa;
                 AgregarPalabra();
                 frmSopaLetras frm = new frmSopaLetras(sopa, conjunto_de_conceptos);
@@ -118,7 +113,6 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
         else
             JOptionPane.showMessageDialog(rootPane, "Número máximo para filas y columnas es 50 y mínimo 2", "jSopaLetras", 1);
     }
-
     public void AgregarPalabra(){
         //ORDENA DE MANERA ALEATORIA LA DIRECCION A SELECCIONAR
 		List<Integer> intList = Arrays.asList(intArray);
@@ -136,13 +130,12 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
             contador= 0;
             validador= true;
             s = palabra.palabra;
-            //SE ROMPE CUANDO LOGRE ENTRAR INSERTAR LA PALABRA SELECCIONADA, HASTA UN MAXIMO DE 50 INTENTOS "SI NO LO LOGRA SE LO SALTA"
+            //SE ROMPE CUANDO LOGRE ENTRAR INSERTAR LA PALABRA SELECCIONADA, HASTA UN MAXIMO DE 100 INTENTOS "SI NO LO LOGRA SE LO SALTA"
             while(validador == true){
                 for(aux = 0; aux< 8 ; aux++){
                     forma = intArray[aux];
                     if(s.length()> 0){
                         int num = sopa.Verify(s, posX, posY, forma);
-                        System.out.println(num);
                         if(num == 0){
                             if(verifyString(s,sopa.getCaracteresPermitidos())){
                                 sopa.setPalabra(s, posX, posY, forma);
@@ -180,7 +173,6 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
         //JOptionPane.showMessageDialog(rootPane, "Palabra no válida", "jSopaLetras" , 1);
 
     }
-
     private static boolean verifyString(String cadena, String caracteres){
         char c[],x;
         int i,j,k;
@@ -202,15 +194,9 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
         else
             return false;
     }
-
-
-
-
-
     public void actionPerformed(ActionEvent e) {
         crearSopaLetras();
     }
-
     public void keyTyped(KeyEvent e) {
         if(e.getKeyChar() == '\n')
             crearSopaLetras();

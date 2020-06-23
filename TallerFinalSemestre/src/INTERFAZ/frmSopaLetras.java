@@ -14,12 +14,14 @@ public class frmSopaLetras extends JFrame implements MouseListener{
     private JLabel botones[][];
     private JMenuItem JMINuevo,JMIAcercaDe,JMICrear,JMIRemove,JMIColorF,JMIColorL,JMIColorC;
     private JCheckBoxMenuItem cuadricula,JMIPinta;
-    private Sopaletras2 sopa;
+    private Sopaletras sopa;
     private Color color,colorf,colorl;
     private JPanel pane;
     private ArrayList<Concepto> conjunto_de_conceptos;
+    private int posANTESX, posANTESY;
+    private int verificador_apretar_mouse= 0;
 
-    public frmSopaLetras(Sopaletras2 xSopa, ArrayList<Concepto> xconjunto_de_conceptos){
+    public frmSopaLetras(Sopaletras xSopa, ArrayList<Concepto> xconjunto_de_conceptos){
         super("jSopaLetras");
         color = null;
         colorf = null;
@@ -242,26 +244,35 @@ public class frmSopaLetras extends JFrame implements MouseListener{
     //}
     public void mouseClicked(MouseEvent e) {
         JLabel label = (JLabel)e.getSource();
-        label.setBackground(Color.RED);
-        int posX, posY,pose;
+        /*label.setBackground(Color.RED);
+        int pose;
         pose = label.getName().indexOf("e");
-        posX = Integer.parseInt(label.getName().substring(0,pose));
-        posY = Integer.parseInt(label.getName().substring(pose+1));
-
+        posx_actual = Integer.parseInt(label.getName().substring(0,pose));
+        posy_actual = Integer.parseInt(label.getName().substring(pose+1));
+        */
     }
 
     public void mousePressed(MouseEvent e) {
+        verificador_apretar_mouse = 1;
         JLabel label = (JLabel)e.getSource();
         label.setBackground(Color.GRAY);
         //CREAR ALGORITMO PARA PINTAR LOS CUADROS QUE SE ESTAN SELECCIONANDO
-
-
+        int pose;
+        System.out.println(label.getText());
+        pose = label.getName().indexOf("e");
+        posANTESX = Integer.parseInt(label.getName().substring(0,pose));
+        posANTESY = Integer.parseInt(label.getName().substring(pose+1));
         //throw new UnsupportedOperationException("Not supported yet.");
     }
-
     public void mouseReleased(MouseEvent e) {
+        verificador_apretar_mouse = 0;
         JLabel label = (JLabel)e.getSource();
         label.setBackground(Color.PINK);
+        System.out.println("LO SOLTE");
+        int pose;
+        pose = label.getName().indexOf("e");
+        posANTESX = Integer.parseInt(label.getName().substring(0,pose));
+        posANTESY = Integer.parseInt(label.getName().substring(pose+1));
         //throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -269,6 +280,15 @@ public class frmSopaLetras extends JFrame implements MouseListener{
     public void mouseEntered(MouseEvent e) {
         JLabel label = (JLabel)e.getSource();
         color = label.getBackground();
+        //System.out.println(label.getText());
+        int posx_actual,posy_actual,pose;
+        pose = label.getName().indexOf("e");
+        posx_actual = Integer.parseInt(label.getName().substring(0,pose));
+        posy_actual = Integer.parseInt(label.getName().substring(pose+1));
+        int m = buscar_camino(posx_actual,posy_actual);
+        if(m == -1){
+            System.out.println("estas parado donde mismo capò");
+        }
         label.setBackground(Color.GREEN);
         //this.setTitle(this.getWidth() + " * " + this.getHeight());
     }
@@ -284,5 +304,32 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                     if(sopa.lockedPosition(posX,posY))
                         label.setBackground(Color.YELLOW);
             }
+           
+    }
+
+    public int buscar_camino(int posX, int posY) {
+        //forma = 1 izquierda, 2 derecha, 3 arriba, 4 abajo
+        // 5 Arriba izquierda
+        // 6  Arriba derecha
+        // 7 Abajo izquierda
+        // 8 Abajo derecha
+        //buscar si se encuentra hacia abajo
+        int tamaño_max=20, verificador=0;
+        int[][] matriz_gemela = new int[tamaño_max][tamaño_max];
+        System.out.println(posANTESX);
+        System.out.println(posANTESY);
+        System.out.println("----");
+        System.out.println(posX);
+        System.out.println(posY);
+        System.out.println("");
+        System.out.println(sopa.jletra[0][0].getText());
+        sopa.jletra[3][5].setBackground(Color.ORANGE);
+        if(verificador_apretar_mouse == 0){
+                verificador = -1;
+        }
+        //izquierda
+        
+        
+        return verificador;
     }
 }

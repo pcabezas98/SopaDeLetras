@@ -1,6 +1,6 @@
-package INTERFAZ;
+package OBJ;
 
-import OBJ.*;
+import INTERFAZ.*;
 import java.util.ArrayList;
 
 public class PalabrasIntro {

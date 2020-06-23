@@ -19,13 +19,13 @@ import OBJ.*;
 import java.util.ArrayList;
 
 public class frmEliminaPalabra extends JDialog implements KeyListener,ActionListener {
-    private Sopaletras2 sopa;
+    private Sopaletras sopa;
     private JMenuItem mnuRemove;
     private JList lista;
     private Color colorf;
     private boolean boolpinta;
 
-    public frmEliminaPalabra(Sopaletras2 xsopa, Color xcolor, boolean bPinta){
+    public frmEliminaPalabra(Sopaletras xsopa, Color xcolor, boolean bPinta){
         super();
         sopa = xsopa;
         colorf = xcolor;

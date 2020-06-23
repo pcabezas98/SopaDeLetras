@@ -1,21 +1,21 @@
-package INTERFAZ;
+package OBJ;
+import INTERFAZ.*;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.util.Vector;
 import javax.swing.JLabel;
-import OBJ.*;
 import java.util.ArrayList;
 
-public class Sopaletras2 {
+public class Sopaletras {
     //private char[][] letras;
     private int filas, columnas;
-    private JLabel[][] jletra;
+    public JLabel[][] jletra;
     private int[][] lockedPos;
     private String caracteres;
     private Vector<PalabrasIntro> palabras;
 
-    public Sopaletras2(int xfilas, int xcolumnas, String xcaracteres){
+    public Sopaletras(int xfilas, int xcolumnas, String xcaracteres){
         filas = xfilas;
         columnas = xcolumnas;
         jletra = new JLabel[filas][columnas];
