@@ -272,6 +272,7 @@ public class Main {
 
         frmCreaSopaLetras f = new frmCreaSopaLetras(conjunto_de_conceptos);
         f.setVisible(true);
+
     }
     //Notas: Error al agregar palabra de 1 letra
 }

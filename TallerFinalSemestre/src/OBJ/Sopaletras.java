@@ -31,17 +31,7 @@ public class Sopaletras {
                 jletra[i][j].setFont(new Font("Arial",Font.PLAIN,18));
                 jletra[i][j].setName(i + "e" + j);
                 jletra[i][j].setOpaque(true);
-            }
-        }
-    }
-    public void New(){
-        int xAscii,i,j;
-        lockedPos = new int[filas][columnas];
-        palabras = new Vector();
-        for(i = 0; i < filas; i++){
-            for(j = 0; j < columnas; j++){
-                xAscii = (int)(Math.random()* caracteres.length());
-                jletra[i][j].setText(caracteres.substring(xAscii,xAscii+1));
+                
             }
         }
     }
@@ -69,26 +59,13 @@ public class Sopaletras {
     public int getTotalPalabras(){
         return palabras.size();
     }
-    public void PintaPosicion(int x,int y, Color xcolor){
-        jletra[x][y].setBackground(xcolor);
-    }
+    //PINTA LA PALABRA INGRESADA 
     public void PintaPalabra(int pos, Color xcolor){
         if(pos < getTotalPalabras()){
             PalabrasIntro pa = getPalabra(pos);
             int j;
             for(j = 0; j < pa.getSizePalabra(); j++)
                 jletra[pa.getPosX(j)][pa.getPosY(j)].setBackground(xcolor);
-        }
-    }
-    public void PintaAllPalabra(Color xcolor){
-        if(getTotalPalabras()>0){
-            PalabrasIntro pa;
-            int i,j;
-            for(i = 0; i < getTotalPalabras(); i++){
-                pa = getPalabra(i);
-                for(j = 0; j < pa.getSizePalabra(); j++)
-                    jletra[pa.getPosX(j)][pa.getPosY(j)].setBackground(xcolor);
-            }
         }
     }
     public void RemovePalabra(int pos){

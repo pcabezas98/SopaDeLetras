@@ -1,117 +1,148 @@
 
 package INTERFAZ;
 import OBJ.*;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import java.awt.Color;
 import java.util.ArrayList;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 
-
-public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyListener{
-    private JButton JBAceptar;
-    private JTextField txtFilas,txtColumnas,txtLetras;
+public class frmCreaSopaLetras extends JDialog {
+    private int columnas=20, filas=20;
+    private String txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private ArrayList<Concepto> conjunto_de_conceptos;
-    private int posX,posY,forma;
-    private boolean booResalta;
     private Integer[] intArray = { 1, 2, 3, 4, 5, 6, 7 , 8};
     private Sopaletras sopa;
+    private int posX,posY,forma,numero_random = (int) (Math.random() * 9);
+    private JButton jButton1,jButton2,jButton3;
+    private JLabel jLabel1, jLabel2, jLabel3;
 
     public frmCreaSopaLetras(ArrayList<Concepto> xconjunto_de_conceptos){
         super();
         conjunto_de_conceptos = xconjunto_de_conceptos;
         forma = 1;
-        posX = (int) (Math.random() * 19);
-        posY = (int) (Math.random() * 19);
+        posX = (int) (Math.random() * filas-1);
+        posY = (int) (Math.random() * filas-1);
         IniciaGUI();
         this.setTitle("jSopaLetras");
-        this.setSize(320,240);
+        this.pack();
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
     }
-    
     public void IniciaGUI(){
-        JPanel panePrincipal = new JPanel(new GridLayout(4,1));
-        JLabel label0 = new JLabel("  Crear Sopa de letras: ");
-        JPanel pane1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            JLabel label1 = new JLabel("Filas: ");
-            txtFilas = new JTextField("20",4);
-            txtFilas.setHorizontalAlignment(JTextField.CENTER);
-            txtFilas.addKeyListener(this);
-            pane1.add(label1);
-            pane1.add(txtFilas);
-        JPanel pane2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            JLabel label2 = new JLabel("Columnas: ");
-            txtColumnas = new JTextField("20",4);
-            txtColumnas.setHorizontalAlignment(JTextField.CENTER);
-            txtColumnas.addKeyListener(this);
-            pane2.add(label2);
-            pane2.add(txtColumnas);
-        JPanel pane21 = new JPanel(new GridLayout(1,2));
-            pane21.add(pane1);
-            pane21.add(pane2);
-        JPanel pane3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            JLabel label3 = new JLabel("Letras: ");
-            txtLetras = new JTextField("ABCDEFGHIJKLMNOPQRSTUVWXYZ",22);
-            txtLetras.addKeyListener(this);
-            pane3.add(label3);
-            pane3.add(txtLetras);
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        JPanel pane4 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-            JBAceptar = new JButton("Aceptar");
-            JBAceptar.addActionListener(this);
-            pane4.add(JBAceptar);
-        panePrincipal.add(label0);
-        panePrincipal.add(pane21);
-        panePrincipal.add(pane3);
-        panePrincipal.add(pane4);
-        this.add(panePrincipal);
-    }
-    private int verifyFilas(){
-        try{
-            int a = Integer.parseInt(txtFilas.getText());
-            int b = Integer.parseInt(txtColumnas.getText());
-            int i = 0;
-            if(a < 2 || a > 50)
-               i = 2;
-            if (b < 2 || b > 50)
-               i = 2;
-            return i;
-        }catch(Exception e){
-            return 1;
-        }
-    }
+        jLabel1.setText("BIENVENIDO A SOPA DE LETRAS");
+
+        jButton1.setBackground(new java.awt.Color(5, 240, 5));
+        jButton1.setText("FACIL");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(240, 240, 5));
+        jButton2.setText("MEDIO");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(240, 5, 5));
+        jButton3.setText("DIFICIL");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Seleccione Dificultad");
+
+        jLabel3.setForeground(new java.awt.Color(150, 150, 150));
+        jLabel3.setText("© Roberto A. - Pablo C. - Sergio M. - Modelado de Programación 2020");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel3)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(22, 22, 22)
+                .addComponent(jButton1)
+                .addGap(28, 28, 28)
+                .addComponent(jButton2)
+                .addGap(31, 31, 31)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jLabel3)));
+                
+        
+        
+
+
+    }   
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        columnas = 20 ;
+        filas = 20;
+        crearSopaLetras();
+        
+    }                                        
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        columnas = 30;
+        filas = 30;
+        crearSopaLetras();
+        
+    } 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        columnas = 50;
+        filas = 50;
+        crearSopaLetras();
+    }                                        
     private void crearSopaLetras(){
-        int num = verifyFilas();
-        if(num == 0){
-            if(txtLetras.getText().length()>0){
-                Sopaletras xsopa = new Sopaletras(Integer.parseInt(txtFilas.getText()),Integer.parseInt(txtColumnas.getText()),txtLetras.getText());
-                sopa = xsopa;
-                AgregarPalabra();
-                frmSopaLetras frm = new frmSopaLetras(sopa, conjunto_de_conceptos);
-                frm.setVisible(true);
-                frm.setLocationRelativeTo(this);
-                this.dispose();
-            }else
-                JOptionPane.showMessageDialog(rootPane, "Al menos debe haber un carácter", "jSopaLetras", 1);
-        }else if(num == 1)
-            JOptionPane.showMessageDialog(rootPane, "Datos no válidos", "jSopaLetras", 1);
-        else
-            JOptionPane.showMessageDialog(rootPane, "Número máximo para filas y columnas es 50 y mínimo 2", "jSopaLetras", 1);
+        if(txt.length()>0){
+            Sopaletras xsopa = new Sopaletras(filas,columnas,txt);
+            sopa = xsopa;
+            AgregarPalabra();
+            frmSopaLetras frm = new frmSopaLetras(sopa, conjunto_de_conceptos.get(numero_random), filas);
+            frm.setVisible(true);
+            frm.setLocationRelativeTo(this);
+            this.dispose();
+        }else
+            JOptionPane.showMessageDialog(rootPane, "Al menos debe haber un carácter", "jSopaLetras", 1);
+        
     }
     public void AgregarPalabra(){
         //ORDENA DE MANERA ALEATORIA LA DIRECCION A SELECCIONAR
@@ -123,7 +154,6 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
         int contador;
         boolean validador;
         String s;
-        int numero_random = (int) (Math.random() * 9);
         //SELECCIONAR LA PALABRA
         JOptionPane.showMessageDialog(rootPane, "El concepto a buscar es: ".concat(conjunto_de_conceptos.get(numero_random).nombre) , "Concepto" , 1);
         for (Palabra palabra :conjunto_de_conceptos.get(numero_random).lista_de_palabras) {
@@ -139,7 +169,6 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
                         if(num == 0){
                             if(verifyString(s,sopa.getCaracteresPermitidos())){
                                 sopa.setPalabra(s, posX, posY, forma);
-                                //if(booResalta)
                                 sopa.PintaPalabra(sopa.getTotalPalabras()-1, Color.YELLOW);
                                 validador = false;
                                 this.dispose();
@@ -164,8 +193,8 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
                         JOptionPane.showMessageDialog(rootPane, "No se logro poscionar la palabra ".concat(s), "jSopaLetras" , 1);
                         break;
                     }
-                    posX = (int) (Math.random() * 19);
-                    posY = (int) (Math.random() * 19);
+                    posX = (int) (Math.random() * filas-1);
+                    posY = (int) (Math.random() * filas-1);
                     contador++;
                 }
             }
@@ -194,13 +223,5 @@ public class frmCreaSopaLetras extends JDialog implements ActionListener,KeyList
         else
             return false;
     }
-    public void actionPerformed(ActionEvent e) {
-        crearSopaLetras();
-    }
-    public void keyTyped(KeyEvent e) {
-        if(e.getKeyChar() == '\n')
-            crearSopaLetras();
-    }
-    public void keyPressed(KeyEvent e) {}
-    public void keyReleased(KeyEvent e) {}
+
 }
