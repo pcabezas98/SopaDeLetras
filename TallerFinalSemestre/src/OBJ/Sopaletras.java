@@ -68,19 +68,6 @@ public class Sopaletras {
                 jletra[pa.getPosX(j)][pa.getPosY(j)].setBackground(xcolor);
         }
     }
-    public void RemovePalabra(int pos){
-        PalabrasIntro pa = palabras.get(pos);
-        int i,xAscii,x,y;
-        for(i = 0; i < pa.getSizePalabra(); i++){
-            xAscii = (int)(Math.random()* caracteres.length());
-            x = pa.getPosX(i);
-            y = pa.getPosY(i);
-            lockedPos[x][y]--;
-            if(lockedPos[x][y] < 1)
-                jletra[x][y].setText(caracteres.substring(xAscii, xAscii+1));
-        }
-        palabras.remove(pos);
-    }
     public Vector getVectorPalabas(){
         return palabras;
     }

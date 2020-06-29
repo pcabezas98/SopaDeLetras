@@ -403,16 +403,12 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                     pose = label.getName().indexOf("e");
                     posANTESX = Integer.parseInt(label.getName().substring(0,pose));
                     posANTESY = Integer.parseInt(label.getName().substring(pose+1));
-                    System.out.println(posANTESX+","+posANTESY);
                     aux++;
-                    System.out.println("pasa"+aux);
                 }else{
                     if(aux==1){
                         pose = label.getName().indexOf("e");
                         posx_despues = Integer.parseInt(label.getName().substring(0,pose));
                         posy_despues = Integer.parseInt(label.getName().substring(pose+1));
-                        System.out.println(posx_despues+","+posy_despues);
-                        System.out.println("pasaasasasa");
                     }
                     
                     check_camino(buscar_camino(posx_despues,posy_despues,posANTESX,posANTESY));
@@ -424,10 +420,10 @@ public class frmSopaLetras extends JFrame implements MouseListener{
 
         }
         if(conjunto_de_palabras.lista_de_palabras.size() == 0){
-            System.out.println("FIN DEL JUEGO PERRA");
-        }
-        
-        System.out.println("-------");
+            Findeljuego final_ventana = new Findeljuego();
+            final_ventana.setVisible(true);
+            this.dispose();
+        }        
     }
     
     public int buscar_camino(int posX, int posY, int posANTESX,int posANTESY) {
@@ -482,7 +478,6 @@ public class frmSopaLetras extends JFrame implements MouseListener{
     }
 
     public Boolean verificar_palabraBoolean(String palabrax){
-        System.out.println(palabrax);
         String palabra_invertida = "";
         for (int x=palabrax.length()-1;x>=0;x--)
             palabra_invertida = palabra_invertida + palabrax.charAt(x);
@@ -495,7 +490,6 @@ public class frmSopaLetras extends JFrame implements MouseListener{
             }
         }
 
-        System.out.println(palabra_invertida);
         for (Palabra p : conjunto_de_palabras.lista_de_palabras) {
             if(palabra_invertida.equals(p.palabra)){
                 conjunto_de_palabras.lista_de_palabras.remove(p);
@@ -530,9 +524,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                             }else{
                                 sopa.jletra[posx_despues_1][posy_despues_1].setBackground(Color.RED);
                             }
-                            System.out.println("1"); 
                             Thread.sleep(1*500);
-                            System.out.println("2"); 
                             if( sopa.jletra[posANTESX_1][posANTESY_1].getBackground().equals(Color.pink)){
                                 sopa.jletra[posANTESX_1][posANTESY_1].setBackground(Color.GREEN);  
                                 
@@ -577,9 +569,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                                         sopa.jletra[posANTESX_1][i].setBackground(Color.RED);
                                     }
                                 }
-                                System.out.println("1"); 
                                 Thread.sleep(1*500);
-                                System.out.println("2"); 
                                 for(int i=posANTESY_1; i>=posy_despues; i--){
                                     if(sopa.jletra[posANTESX_1][i].getBackground().equals(Color.pink)){
                                         sopa.jletra[posANTESX_1][i].setBackground(Color.GREEN);  
@@ -601,7 +591,6 @@ public class frmSopaLetras extends JFrame implements MouseListener{
             case 2:
                 for(int i=posANTESY; i<=posy_despues; i++){
                    palabra = palabra+sopa.jletra[posANTESX][i].getText();
-                   System.out.println(sopa.jletra[posANTESX][i].getText());
                 }
 
                 if(verificar_palabraBoolean(palabra)==true){
@@ -622,9 +611,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                                         sopa.jletra[posANTESX_1][i].setBackground(Color.RED);
                                     }
                                 }
-                                System.out.println("1"); 
                                 Thread.sleep(1*500);
-                                System.out.println("2"); 
                                 for(int i=posANTESY_1; i<=posy_despues; i++){
                                     if(sopa.jletra[posANTESX_1][i].getBackground().equals(Color.pink)){
                                         sopa.jletra[posANTESX_1][i].setBackground(Color.GREEN);  
@@ -647,7 +634,6 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                 for(int i=posANTESX; i>=posx_despues; i--){
                     palabra = palabra+sopa.jletra[i][posANTESY].getText();
                 }
-                System.out.println(palabra);
                 if(verificar_palabraBoolean(palabra)==true){
                     for(int i=posANTESX; i>=posx_despues; i--){
                         sopa.jletra[i][posANTESY].setBackground(Color.green);
@@ -666,9 +652,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                                         sopa.jletra[i][posANTESY_1].setBackground(Color.RED);
                                     }
                                 }
-                                System.out.println("1"); 
                                 Thread.sleep(1*500);
-                                System.out.println("2"); 
                                 for(int i=posANTESX_1; i>=posx_despues; i--){
                                     if(sopa.jletra[i][posANTESY_1].getBackground().equals(Color.pink)){
                                         sopa.jletra[i][posANTESY_1].setBackground(Color.GREEN);  
@@ -708,9 +692,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                                         sopa.jletra[i][posANTESY_1].setBackground(Color.RED);
                                     }
                                 }
-                                System.out.println("1"); 
                                 Thread.sleep(1*500);
-                                System.out.println("2"); 
                                 for(int i=posANTESX_1; i<=posx_despues; i++){
                                     if(sopa.jletra[i][posANTESY_1].getBackground().equals(Color.pink)){
                                         sopa.jletra[i][posANTESY_1].setBackground(Color.GREEN);  
@@ -750,9 +732,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                                         sopa.jletra[i][j].setBackground(Color.RED);
                                     }
                                 }
-                                System.out.println("1"); 
                                 Thread.sleep(1*500);
-                                System.out.println("2"); 
                                 for(int i=posANTESX_1, j = posANTESY_1; i<=posx_despues; i++,j++){
                                     if(sopa.jletra[i][j].getBackground().equals(Color.pink)){
                                         sopa.jletra[i][j].setBackground(Color.GREEN);  
@@ -792,9 +772,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                                         sopa.jletra[i][j].setBackground(Color.RED);
                                     }
                                 }
-                                System.out.println("1"); 
                                 Thread.sleep(1*500);
-                                System.out.println("2"); 
                                 for(int i=posANTESX_1, j = posANTESY_1; i>=posx_despues; i--,j--){
                                     if(sopa.jletra[i][j].getBackground().equals(Color.pink)){
                                         sopa.jletra[i][j].setBackground(Color.GREEN);  
@@ -835,9 +813,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                                         sopa.jletra[i][j].setBackground(Color.RED);
                                     }
                                 }
-                                System.out.println("1"); 
                                 Thread.sleep(1*500);
-                                System.out.println("2"); 
                                 for(int i=posANTESX_1, j = posANTESY_1; i>=posx_despues; i--,j++){
                                     if(sopa.jletra[i][j].getBackground().equals(Color.pink)){
                                         sopa.jletra[i][j].setBackground(Color.GREEN);  
@@ -877,9 +853,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                                         sopa.jletra[i][j].setBackground(Color.RED);
                                     }
                                 }
-                                System.out.println("1"); 
                                 Thread.sleep(1*500);
-                                System.out.println("2"); 
                                 for(int i=posANTESX_1, j = posANTESY_1; i<=posx_despues; i++,j--){
                                     if(sopa.jletra[i][j].getBackground().equals(Color.pink)){
                                         sopa.jletra[i][j].setBackground(Color.GREEN);  

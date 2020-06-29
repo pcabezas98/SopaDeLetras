@@ -175,20 +175,20 @@ public class frmCreaSopaLetras extends JDialog {
                                 break;
                             }else
                             continue;
-                            //JOptionPane.showMessageDialog(rootPane, "Palabra no agregada. La palabra contiene letras que no forman parte de la sopa de letras. También se distingue entre mayúsculas y minúsculas.", "jSopaLetras" , 1);
+                            //Palabra no agregada. La palabra contiene letras que no forman parte de la sopa de letras. También se distingue entre mayúsculas y minúsculas.
                             
                         }else if (num == 1)
                             continue;
-                            //JOptionPane.showMessageDialog(rootPane, "Palabra muy extensa para ser colocada", "jSopaLetras" , 1);
+                            //Palabra muy extensa para ser colocada
                         else if(num == 2)
                             continue;
-                            //JOptionPane.showMessageDialog(rootPane, "Palabra se cruza con otra ya agregada anteriormente", "jSopaLetras" , 1);
+                            //Palabra se cruza con otra ya agregada anteriormente
                     }else
                     continue;
-                    //JOptionPane.showMessageDialog(rootPane, "Palabra no válida", "jSopaLetras" , 1);
+                    //Palabra no válida
                 }
                 if(validador == true){
-                    //JOptionPane.showMessageDialog(rootPane, "NO ENCAJA LA PALABRA EN EL LUGAR INDICADO", "jSopaLetras" , 1);
+                    //NO ENCAJA LA PALABRA EN EL LUGAR INDICADO
                     if (contador == 100){
                         JOptionPane.showMessageDialog(rootPane, "No se logro poscionar la palabra ".concat(s), "jSopaLetras" , 1);
                         break;
@@ -199,7 +199,7 @@ public class frmCreaSopaLetras extends JDialog {
                 }
             }
         }
-        //JOptionPane.showMessageDialog(rootPane, "Palabra no válida", "jSopaLetras" , 1);
+        //Palabra no válida
 
     }
     private static boolean verifyString(String cadena, String caracteres){
