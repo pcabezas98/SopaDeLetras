@@ -531,7 +531,7 @@ public class frmSopaLetras extends JFrame implements MouseListener{
                             }else{
                                 sopa.jletra[posANTESX_1][posANTESY_1].setBackground(color); 
                             }
-                            if( sopa.jletra[posANTESX_1][posANTESY_1].getBackground().equals(Color.pink)){
+                            if( sopa.jletra[posx_despues_1][posy_despues_1].getBackground().equals(Color.pink)){
                                 sopa.jletra[posx_despues_1][posy_despues_1].setBackground(Color.GREEN);  
                             }else{
                                 sopa.jletra[posx_despues_1][posy_despues_1].setBackground(color); 
